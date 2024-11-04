@@ -1,0 +1,28 @@
+[package]
+name = "ffi-cloudcore"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cloudcore = { path = "../cloudcore", features = ["library"] }
+ffi-utilities = { git = "ssh://git@git.viper-connected.com/cross-platform/utilities-rust.git" }
+mantle-utilities = { git = "ssh://git@git.viper-connected.com/cross-platform/utilities-rust.git" }
+log = "0.4.14"
+serde_json = "1.0.68"
+lazy_static = "1.4.0"
+
+[target.'cfg(target_os = "android")'.dependencies]
+openssl = { version ="0.10", features = ["vendored"] }
+android_logger = "0.10.1"
+
+[target.'cfg(target_os = "ios")'.dependencies]
+simplelog = "0.12.0"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+simplelog = "0.12.0"
+
+[lib]
+name = "cloudcore_ffi"
+crate-type = ["staticlib", "cdylib"]

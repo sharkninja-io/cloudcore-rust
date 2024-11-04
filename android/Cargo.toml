@@ -1,0 +1,24 @@
+[package]
+name = "android-cloudcore"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+jni = "0.19.0"
+log = "0.4.14"
+openssl = { version ="0.10", features = ["vendored"] }
+android_logger = "0.10.1"
+lazy_static = "1.4.0"
+ctor = "0.1.21"
+serde_json = "1.0.68"
+dlopen = "0.1.8"
+dlopen_derive = "0.1.4"
+android-utilities = { git = "ssh://git@git.viper-connected.com/cross-platform/utilities-rust.git" }
+ffi-utilities = { git = "ssh://git@git.viper-connected.com/cross-platform/utilities-rust.git" }
+mantle-utilities = { git = "ssh://git@git.viper-connected.com/cross-platform/utilities-rust.git" }
+cloudcore = { path = "../cloudcore" }
+libc = "0.2.121"
+
+[lib]
+name = "cloudcore_android"
+crate-type = ["cdylib"]

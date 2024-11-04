@@ -1,0 +1,20 @@
+[package]
+name = "ios-cloudcore"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4.14"
+simplelog = "0.11.1"
+lazy_static = "1.4.0"
+serde_json = "1.0.68"
+ios-utilities = { git = "ssh://git@git.viper-connected.com/cross-platform/utilities-rust.git" }
+ffi-utilities = { git = "ssh://git@git.viper-connected.com/cross-platform/utilities-rust.git" }
+mantle-utilities = { git = "ssh://git@git.viper-connected.com/cross-platform/utilities-rust.git" }
+cloudcore = { path = "../cloudcore" }
+
+[lib]
+name = "cloudcore_ios"
+crate-type = ["staticlib"]

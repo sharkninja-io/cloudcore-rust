@@ -1,0 +1,32 @@
+[package]
+name = "cloudcore"
+version = "1.0.38"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+mantle-utilities = { git = "ssh://git@git.viper-connected.com/cross-platform/utilities-rust.git" }
+log = { version ="0.4.14", optional = true }
+tokio = { version = "1.12.0", features = ["full"], optional = true }
+tokio-util = { version = "0.7.1", optional = true }
+serde = { version = "1.0.130", features = ["derive"] }
+serde_json = "1.0.68"
+reqwest = { version = "=0.11.4", features = ["json", "blocking", "cookies", "stream"], optional = true }
+lazy_static =  { version = "1.4.0", optional = true }
+bytes = { version = "1.1.0", optional = true }
+rand = { version = "0.8.4", optional = true }
+async-recursion = { version = "1.0.0", optional = true }
+chrono = { version = "=0.4.19", optional = true }
+uuid = { version = "1.0.0", optional = true, features = ["v4", "fast-rng"]}
+
+simplelog = "0.11.1"
+
+[features]
+signatures = []
+library = ["signatures", "tokio", "tokio-util", "reqwest", "bytes", "rand", "log", "lazy_static", "async-recursion", "chrono", "uuid"]
+examples = []
+
+[dev-dependencies]
+cloudcore = { path = ".", features = ["library", "examples"] }
+
